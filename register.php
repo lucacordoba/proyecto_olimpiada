@@ -62,13 +62,13 @@ if ($_POST) {
         
         <?php if ($error): ?>
             <div class="alert alert-danger animate__animated animate__shakeX">
-                <i class="fas fa-exclamation-triangle"></i> <?= htmlspecialchars($error) ?>
+                <i class="fas fa-exclamation-triangle"></i> <?= ($error) ?>
             </div>
         <?php endif; ?>
         
         <?php if ($success): ?>
             <div class="alert alert-success animate__animated animate__bounceIn">
-                <i class="fas fa-check-circle"></i> <?= htmlspecialchars($success) ?>
+                <i class="fas fa-check-circle"></i> <?= ($success) ?>
                 <br><a href="login.php" class="text-success"><strong>Iniciar sesión ahora</strong></a>
             </div>
         <?php endif; ?>
@@ -77,19 +77,19 @@ if ($_POST) {
             <div class="form-group">
                 <label for="nombre"><i class="fas fa-user"></i> Nombre Completo *</label>
                 <input type="text" id="nombre" name="nombre" class="form-control" 
-                       placeholder="Tu nombre completo" required value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>">
+                       placeholder="Tu nombre completo" required value="<?= ($_POST['nombre'] ?? '') ?>">
             </div>
             
             <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> Email *</label>
                 <input type="email" id="email" name="email" class="form-control" 
-                       placeholder="tu@email.com" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                       placeholder="tu@email.com" required value="<?= ($_POST['email'] ?? '') ?>">
             </div>
             
             <div class="form-group">
                 <label for="telefono"><i class="fas fa-phone"></i> Teléfono</label>
                 <input type="tel" id="telefono" name="telefono" class="form-control" 
-                       placeholder="+54 11 1234-5678" value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
+                       placeholder="+54 11 1234-5678" value="<?= ($_POST['telefono'] ?? '') ?>">
             </div>
             
             <div class="form-group">
