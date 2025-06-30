@@ -51,7 +51,7 @@ if ($_POST) {
         
         <?php if ($error): ?>
             <div class="alert alert-danger animate__animated animate__shakeX">
-                <i class="fas fa-exclamation-triangle"></i> <?= htmlspecialchars($error) ?>
+                <i class="fas fa-exclamation-triangle"></i> <?= ($error) ?>
             </div>
         <?php endif; ?>
         
@@ -59,7 +59,7 @@ if ($_POST) {
             <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> Email</label>
                 <input type="email" id="email" name="email" class="form-control" 
-                       placeholder="tu@email.com" required value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                       placeholder="tu@email.com" required value="<?= ($_POST['email'] ?? '') ?>">
             </div>
             
             <div class="form-group">
@@ -78,13 +78,6 @@ if ($_POST) {
             <p>¿No tienes cuenta? <a href="register.php" class="text-primary">Regístrate aquí</a></p>
             <p><a href="index.php" class="text-secondary"><i class="fas fa-arrow-left"></i> Volver al inicio</a></p>
         </div>
-        
-        <!-- <div class="mt-4 p-3" style="background: var(--dark-card); border-radius: 0.5rem; font-size: 0.875rem;">
-            <strong><i class="fas fa-info-circle"></i> Usuarios de prueba:</strong><br>
-            <strong>Admin:</strong> admin@turismo.com / password<br>
-            <strong>Vendedor:</strong> vendedor@turismo.com / password<br>
-            <strong>Cliente:</strong> cliente@email.com / password
-        </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
