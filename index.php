@@ -31,6 +31,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
             $stmt = $db->prepare($query);
             $stmt->execute([$nombre, $email, $telefono, $asunto, $mensaje]);
             
+            //Provisionalmente comentado ya que xampp no permite enviar emails reales!!!!
             // Simular envío de email
             // $resultado_email = enviarEmailConsulta($email, $nombre, $asunto);
 
@@ -80,7 +81,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                         <?php if (isVendedor()): ?>
                             <li><a href="admin/" class="nav-link"><i class="fas fa-cog"></i> Admin</a></li>
                         <?php endif; ?>
-                        <li><a href="logout.php" class="nav-link"><i class="fas fa-sign-out-alt"></i> Salir (<?= htmlspecialchars($_SESSION['usuario_nombre']) ?>)</a></li>
+                        <li><a href="logout.php" class="nav-link"><i class="fas fa-sign-out-alt"></i> Salir (<?=$_SESSION['usuario_nombre'] ?>)</a></li>
                     <?php else: ?>
                         <li><a href="login.php" class="nav-link"><i class="fas fa-sign-in-alt"></i> Ingresar</a></li>
                         <li><a href="register.php" class="nav-link"><i class="fas fa-user-plus"></i> Registrarse</a></li>
@@ -95,7 +96,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
         </nav>
     </header>
 
-<!-- Hero Section -->
+<!-- Seccion Portada -->
    <section class="hero">
         <div class="cosmic-background"></div>
         <div class="hero-content">
@@ -146,11 +147,11 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                         </div>
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title"><?= htmlspecialchars($producto['nombre']) ?></h3>
-                        <p class="product-description"><?= htmlspecialchars($producto['descripcion']) ?></p>
+                        <h3 class="product-title"><?= $producto['nombre'] ?></h3>
+                        <p class="product-description"><?= $producto['descripcion'] ?></p>
                         <?php if ($producto['destino']): ?>
                             <p class="product-destination">
-                                <i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($producto['destino']) ?>
+                                <i class="fas fa-map-marker-alt"></i> <?= $producto['destino'] ?>
                             </p>
                         <?php endif; ?>
                         <div class="product-footer">
@@ -174,7 +175,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
         </div>
     </section>
 
-    <!-- Features -->
+    <!-- Seccion "Nosotros" -->
     <section class="features" data-aos="fade-up">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">
@@ -217,13 +218,13 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                 <div class="contact-form-container" data-aos="fade-left">
                     <?php if ($consulta_success): ?>
                         <div class="alert alert-success animate__animated animate__bounceIn">
-                            <i class="fas fa-check-circle"></i> <?= htmlspecialchars($consulta_success) ?>
+                            <i class="fas fa-check-circle"></i> <?= ($consulta_success) ?>
                         </div>
                     <?php endif; ?>
                     
                     <?php if ($consulta_error): ?>
                         <div class="alert alert-danger animate__animated animate__shakeX">
-                            <i class="fas fa-exclamation-triangle"></i> <?= htmlspecialchars($consulta_error) ?>
+                            <i class="fas fa-exclamation-triangle"></i> <?= ($consulta_error) ?>
                         </div>
                     <?php endif; ?>
                     
@@ -235,13 +236,13 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                                 <label for="nombre"><i class="fas fa-user"></i> Nombre Completo *</label>
                                 <input type="text" id="nombre" name="nombre" class="form-control" 
                                        placeholder="Tu nombre completo" required 
-                                       value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>">
+                                       value="<?= $_POST['nombre'] ?? '' ?>">
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="fas fa-envelope"></i> Email *</label>
                                 <input type="email" id="email" name="email" class="form-control" 
                                        placeholder="tu@email.com" required 
-                                       value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
+                                       value="<?= $_POST['email'] ?? '' ?>">
                             </div>
                         </div>
                         
@@ -250,7 +251,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                                 <label for="telefono"><i class="fas fa-phone"></i> Teléfono</label>
                                 <input type="tel" id="telefono" name="telefono" class="form-control" 
                                        placeholder="+54 11 1234-5678" 
-                                       value="<?= htmlspecialchars($_POST['telefono'] ?? '') ?>">
+                                       value="<?= $_POST['telefono'] ?? '' ?>">
                             </div>
                             <div class="form-group">
                                 <label for="asunto"><i class="fas fa-tag"></i> Asunto *</label>
@@ -269,7 +270,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                         <div class="form-group">
                             <label for="mensaje"><i class="fas fa-comment"></i> Mensaje *</label>
                             <textarea id="mensaje" name="mensaje" class="form-control" rows="5" 
-                                      placeholder="Cuéntanos en qué podemos ayudarte..." required><?= htmlspecialchars($_POST['mensaje'] ?? '') ?></textarea>
+                                      placeholder="Cuéntanos en qué podemos ayudarte..." required><?= $_POST['mensaje'] ?? '' ?></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary w-50">
@@ -291,7 +292,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                         <i class="fas fa-globe-americas"></i>
                         <h3>Quantum Tour</h3>
                     </div>
-                    <p>Transformamos tus sueños de viaje en experiencias extraordinarias. Más de 15 años creando momentos inolvidables.</p>
+                    <p>Transformamos el viaje de tus sueños en experiencias extraordinarias. Más de 15 años creando momentos inolvidables.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -322,16 +323,16 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'consulta') {
                 <div class="footer-section">
                     <h4><i class="fas fa-phone"></i> Contacto</h4>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> info@quantumtour.com</p>
-                        <p><i class="fas fa-phone"></i> +54 11 4567-8900</p>
-                        <p><i class="fas fa-whatsapp"></i> +54 9 11 1234-5678</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1234, CABA</p>
+                        <p><i class="fas fa-envelope"></i> admin@quantumtour.com</p>
+                        <p><i class="fas fa-phone"></i> +54 11 3909-0655</p>
+                        <p><i class="fas fa-whatsapp"></i> +54 9 11 3909-0655</p>
+                        <p><i class="fas fa-map-marker-alt"></i> C. 111 y 19</p>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2024 Quantum Tour. Todos los derechos reservados.</p>
+                    <p>&copy; 2025 Quantum Tour. Todos los derechos reservados.</p>
                     <div class="footer-links">
                         <a href="#">Términos y Condiciones</a>
                         <a href="#">Política de Privacidad</a>
