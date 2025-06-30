@@ -1,14 +1,13 @@
 $(document).ready(() => {
-  // Inicializar AOS con configuración mejorgada
   AOS.init({
     duration: 600,
     easing: "ease-out",
     once: true,
     offset: 50,
-    disable: "mobile", // Deshabilitar en móviles para mejor performance
+    disable: "mobile", 
   })
 
-  // Navegación móvil
+  // En móvil
   $(".hamburger").click(function () {
     $(".nav-menu").toggleClass("active")
     $(this).toggleClass("active")
@@ -20,7 +19,7 @@ $(document).ready(() => {
     $(".hamburger").removeClass("active")
   })
 
-  // Efecto de escritura para el título hero
+  // Efecto de escritura para el título Portada
   function typeWriter(element, text, speed = 80) {
     let i = 0
     element.text("")
@@ -31,7 +30,6 @@ $(document).ready(() => {
         i++
         setTimeout(type, speed)
       } else {
-        // Remover cursor después de completar
         setTimeout(() => {
           element.removeClass("typing-text")
         }, 2000)
@@ -54,7 +52,7 @@ $(document).ready(() => {
     }
   }
 
-  // Sistema de notificaciones mejorado
+  // Notificaciones 
   function showNotification(message, type = "info") {
     const notification = $(`
       <div class="notification notification-${type} animate__animated animate__fadeInRight">
@@ -106,7 +104,6 @@ $(document).ready(() => {
     const button = $(this)
     const originalHtml = button.html()
 
-    console.log("Agregando producto ID:", productId) // Debug
 
     button.prop("disabled", true).html('<span class="loading"></span> Agregando...')
 
@@ -116,7 +113,6 @@ $(document).ready(() => {
       data: { producto_id: productId },
       dataType: "json",
       success: (response) => {
-        console.log("Respuesta del servidor:", response) // Debug
 
         if (response.success) {
           button.removeClass("btn-secondary").addClass("btn-success").html('<i class="fas fa-check"></i> Agregado')
@@ -137,7 +133,7 @@ $(document).ready(() => {
         }
       },
       error: (xhr, status, error) => {
-        console.log("Error AJAX:", xhr.responseText) // Debug
+        console.log("Error AJAX:", xhr.responseText)
         showNotification("Error de conexión", "error")
         button.html(originalHtml).prop("disabled", false)
       },
@@ -204,7 +200,7 @@ $(document).ready(() => {
     }
   })
 
-  // Parallax effect suave para hero
+  // Parallax effect suave para Portada
   $(window).scroll(function () {
     const scrolled = $(this).scrollTop()
     const parallax = $(".hero-background")
