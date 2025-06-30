@@ -128,11 +128,11 @@ $total_carrito = array_sum(array_map(function($item) {
                                 </div>
                             </div>
                             <div class="item-info">
-                                <h4><?= htmlspecialchars($item['nombre']) ?></h4>
-                                <p class="item-description"><?= htmlspecialchars($item['descripcion']) ?></p>
+                                <h4><?= ($item['nombre']) ?></h4>
+                                <p class="item-description"><?= ($item['descripcion']) ?></p>
                                 <?php if ($item['destino']): ?>
                                     <span class="item-destination">
-                                        <i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($item['destino']) ?>
+                                        <i class="fas fa-map-marker-alt"></i> <?= ($item['destino']) ?>
                                     </span>
                                 <?php endif; ?>
                             </div>
@@ -212,17 +212,52 @@ $total_carrito = array_sum(array_map(function($item) {
                         <i class="fas fa-globe-americas"></i>
                         <h3>Quantum Tour</h3>
                     </div>
-                    <p>Transformamos tus sueños de viaje en experiencias extraordinarias.</p>
+                    <p>Transformamos el viaje de tus sueños en experiencias extraordinarias. Más de 15 años creando momentos inolvidables.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-map"></i> Destinos</h4>
+                    <ul>
+                        <li><a href="#">Europa</a></li>
+                        <li><a href="#">Asia</a></li>
+                        <li><a href="#">América</a></li>
+                        <li><a href="#">África</a></li>
+                        <li><a href="#">Oceanía</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-suitcase"></i> Servicios</h4>
+                    <ul>
+                        <li><a href="productos.php">Paquetes Turísticos</a></li>
+                        <li><a href="#">Vuelos</a></li>
+                        <li><a href="#">Hoteles</a></li>
+                        <li><a href="#">Alquiler de Autos</a></li>
+                        <li><a href="#">Seguros de Viaje</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4><i class="fas fa-phone"></i> Contacto</h4>
-                    <p><i class="fas fa-envelope"></i> info@quantumtour.com</p>
-                    <p><i class="fas fa-phone"></i> +54 11 4567-8900</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> admin@quantumtour.com</p>
+                        <p><i class="fas fa-phone"></i> +54 11 3909-0655</p>
+                        <p><i class="fas fa-whatsapp"></i> +54 9 11 3909-0655</p>
+                        <p><i class="fas fa-map-marker-alt"></i> C. 111 y 19</p>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2024 Quantum Tour. Todos los derechos reservados.</p>
+                    <p>&copy; 2025 Quantum Tour. Todos los derechos reservados.</p>
+                    <div class="footer-links">
+                        <a href="#">Términos y Condiciones</a>
+                        <a href="#">Política de Privacidad</a>
+                        <a href="#">Política de Cancelación</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -490,7 +525,6 @@ $total_carrito = array_sum(array_map(function($item) {
             }
         }
         
-        /* Estilos para la sección de consultas */
         .contact-section {
             padding: 5rem 0;
             background: var(--dark-surface);
