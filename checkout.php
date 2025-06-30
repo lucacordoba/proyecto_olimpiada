@@ -139,7 +139,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'procesar_pago') {
                         <i class="fas fa-check-circle"></i>
                     </div>
                     <h2>¡Compra Exitosa!</h2>
-                    <p><?= htmlspecialchars($pago_success) ?></p>
+                    <p><?= ($pago_success) ?></p>
                     <div class="success-actions">
                         <a href="index.php" class="btn btn-primary">
                             <i class="fas fa-home"></i> Volver al Inicio
@@ -156,7 +156,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'procesar_pago') {
                         
                         <?php if ($pago_error): ?>
                             <div class="alert alert-danger animate__animated animate__shakeX">
-                                <i class="fas fa-exclamation-triangle"></i> <?= htmlspecialchars($pago_error) ?>
+                                <i class="fas fa-exclamation-triangle"></i> <?= ($pago_error) ?>
                             </div>
                         <?php endif; ?>
                         
@@ -167,14 +167,14 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'procesar_pago') {
                                 <label for="nombre_tarjeta"><i class="fas fa-user"></i> Nombre en la Tarjeta *</label>
                                 <input type="text" id="nombre_tarjeta" name="nombre_tarjeta" class="form-control" 
                                        placeholder="Como aparece en la tarjeta" required 
-                                       value="<?= htmlspecialchars($_POST['nombre_tarjeta'] ?? '') ?>">
+                                       value="<?= ($_POST['nombre_tarjeta'] ?? '') ?>">
                             </div>
                             
                             <div class="form-group">
                                 <label for="numero_tarjeta"><i class="fas fa-credit-card"></i> Número de Tarjeta *</label>
                                 <input type="text" id="numero_tarjeta" name="numero_tarjeta" class="form-control" 
                                        placeholder="1234 5678 9012 3456" required maxlength="19"
-                                       value="<?= htmlspecialchars($_POST['numero_tarjeta'] ?? '') ?>">
+                                       value="<?= ($_POST['numero_tarjeta'] ?? '') ?>">
                             </div>
                             
                             <div class="form-row">
@@ -204,7 +204,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'procesar_pago') {
                                     <label for="cvv"><i class="fas fa-lock"></i> CVV *</label>
                                     <input type="text" id="cvv" name="cvv" class="form-control" 
                                            placeholder="123" required maxlength="4"
-                                           value="<?= htmlspecialchars($_POST['cvv'] ?? '') ?>">
+                                           value="<?= ($_POST['cvv'] ?? '') ?>">
                                 </div>
                             </div>
                             
@@ -226,7 +226,7 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'procesar_pago') {
                             <?php foreach ($carrito_items as $item): ?>
                             <div class="summary-item">
                                 <div class="item-details">
-                                    <h4><?= htmlspecialchars($item['nombre']) ?></h4>
+                                    <h4><?= ($item['nombre']) ?></h4>
                                     <p>Cantidad: <?= $item['cantidad'] ?></p>
                                 </div>
                                 <div class="item-price">
@@ -264,6 +264,66 @@ if ($_POST && isset($_POST['action']) && $_POST['action'] === 'procesar_pago') {
             <?php endif; ?>
         </div>
     </section>
+
+        <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>Quantum Tour</h3>
+                    </div>
+                    <p>Transformamos el viaje de tus sueños en experiencias extraordinarias. Más de 15 años creando momentos inolvidables.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-map"></i> Destinos</h4>
+                    <ul>
+                        <li><a href="#">Europa</a></li>
+                        <li><a href="#">Asia</a></li>
+                        <li><a href="#">América</a></li>
+                        <li><a href="#">África</a></li>
+                        <li><a href="#">Oceanía</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-suitcase"></i> Servicios</h4>
+                    <ul>
+                        <li><a href="productos.php">Paquetes Turísticos</a></li>
+                        <li><a href="#">Vuelos</a></li>
+                        <li><a href="#">Hoteles</a></li>
+                        <li><a href="#">Alquiler de Autos</a></li>
+                        <li><a href="#">Seguros de Viaje</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-phone"></i> Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> admin@quantumtour.com</p>
+                        <p><i class="fas fa-phone"></i> +54 11 3909-0655</p>
+                        <p><i class="fas fa-whatsapp"></i> +54 9 11 3909-0655</p>
+                        <p><i class="fas fa-map-marker-alt"></i> C. 111 y 19</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Quantum Tour. Todos los derechos reservados.</p>
+                    <div class="footer-links">
+                        <a href="#">Términos y Condiciones</a>
+                        <a href="#">Política de Privacidad</a>
+                        <a href="#">Política de Cancelación</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
