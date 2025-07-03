@@ -83,15 +83,15 @@ $emails = listarEmailsGenerados();
                             </div>
                         </div>
                         <div class="email-info">
-                            <h4><?= htmlspecialchars($email['archivo']) ?></h4>
+                            <h4><?= ($email['archivo']) ?></h4>
                             <p>Tamaño: <?= number_format($email['tamaño'] / 1024, 1) ?> KB</p>
                         </div>
                         <div class="email-actions">
-                            <a href="emails_simulados/<?= htmlspecialchars($email['archivo']) ?>" 
+                            <a href="emails_simulados/<?= ($email['archivo']) ?>" 
                                target="_blank" class="btn btn-primary btn-sm">
                                 <i class="fas fa-eye"></i> Ver Email
                             </a>
-                            <button onclick="eliminarEmail('<?= htmlspecialchars($email['archivo']) ?>')" 
+                            <button onclick="eliminarEmail('<?= ($email['archivo']) ?>')" 
                                     class="btn btn-danger btn-sm">
                                 <i class="fas fa-trash"></i> Eliminar
                             </button>
@@ -113,14 +113,14 @@ $emails = listarEmailsGenerados();
     <script>
         function eliminarEmail(archivo) {
             if (confirm('¿Estás seguro de que quieres eliminar este email?')) {
-                // En un entorno real, harías una petición AJAX para eliminar
+                // Aquí iría la lógica para eliminar el archivo del servidor, pero en esta demo solo mostramos un mensaje
                 alert('Funcionalidad de eliminación no implementada en esta demo');
             }
         }
         
         function limpiarTodosEmails() {
             if (confirm('¿Estás seguro de que quieres eliminar TODOS los emails generados?')) {
-                // En un entorno real, harías una petición AJAX para limpiar
+                // Aquí iría la lógica para limpiar todos los archivos del servidor, pero en esta demo solo mostramos un mensaje
                 alert('Funcionalidad de limpieza no implementada en esta demo');
             }
         }
