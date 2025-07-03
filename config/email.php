@@ -15,10 +15,6 @@ function enviarEmailConsulta($email, $nombre, $asunto) {
     $filename = $email_dir . '/consulta_' . date('Y-m-d_H-i-s') . '_' . sanitizeFilename($email) . '.html';
     file_put_contents($filename, $message);
     
-    // Log para debugging
-    error_log("EMAIL SIMULADO - Consulta guardado en: $filename");
-    error_log("Destinatario: $email");
-    error_log("Asunto: $subject");
     
     // Intentar envío real si está configurado
     $email_real_enviado = false;
@@ -50,12 +46,6 @@ function enviarEmailCompra($email, $nombre, $numero_pedido, $total, $productos) 
     // Guardar email en archivo para visualización
     $filename = $email_dir . '/compra_' . date('Y-m-d_H-i-s') . '_' . $numero_pedido . '.html';
     file_put_contents($filename, $message);
-    
-    // Log para debugging
-    error_log("EMAIL SIMULADO - Compra guardado en: $filename");
-    error_log("Destinatario: $email");
-    error_log("Pedido: $numero_pedido");
-    error_log("Total: " . formatPrice($total));
     
     // Intentar envío real si está configurado
     $email_real_enviado = false;
@@ -209,15 +199,15 @@ function generarHtmlEmailConsulta($email, $nombre, $asunto) {
                 <div class='subtitle'>Consulta Recibida Exitosamente</div>
             </div>
             <div class='content'>
-                <h3>¡Hola " . htmlspecialchars($nombre) . "!</h3>
+                <h3>¡Hola " . $nombre . "!</h3>
                 <p>Gracias por contactarte con <strong>Quantum Tour</strong>. Hemos recibido tu consulta y queremos asegurarte que nuestro equipo de expertos en viajes la revisará cuidadosamente.</p>
                 
                 <div class='info-box'>
                     <h4>📋 Detalles de tu consulta:</h4>
                     <ul>
-                        <li><strong>Nombre:</strong> " . htmlspecialchars($nombre) . "</li>
-                        <li><strong>Email:</strong> " . htmlspecialchars($email) . "</li>
-                        <li><strong>Asunto:</strong> " . htmlspecialchars($asunto) . "</li>
+                        <li><strong>Nombre:</strong> " . $nombre . "</li>
+                        <li><strong>Email:</strong> " . $email . "</li>
+                        <li><strong>Asunto:</strong> " . $asunto . "</li>
                         <li><strong>Fecha:</strong> " . date('d/m/Y H:i') . "</li>
                         <li><strong>Número de referencia:</strong> QT-" . date('Ymd-His') . "</li>
                     </ul>
@@ -264,7 +254,7 @@ function generarHtmlEmailCompra($email, $nombre, $numero_pedido, $total, $produc
     foreach ($productos as $producto) {
         $productos_html .= "
         <tr style='border-bottom: 1px solid #e5e7eb;'>
-            <td style='padding: 15px 10px; color: #374151;'>" . htmlspecialchars($producto['nombre']) . "</td>
+            <td style='padding: 15px 10px; color: #374151;'>" . ($producto['nombre']) . "</td>
             <td style='padding: 15px 10px; text-align: center; color: #6b7280;'>" . $producto['cantidad'] . "</td>
             <td style='padding: 15px 10px; text-align: right; color: #6b7280;'>" . formatPrice($producto['precio_unitario']) . "</td>
             <td style='padding: 15px 10px; text-align: right; font-weight: 600; color: #059669;'>" . formatPrice($producto['subtotal']) . "</td>
@@ -462,7 +452,7 @@ function generarHtmlEmailCompra($email, $nombre, $numero_pedido, $total, $produc
                 <div class='subtitle'>¡Compra Confirmada Exitosamente!</div>
             </div>
             <div class='content'>
-                <h3 style='color: #059669; font-size: 24px; margin-bottom: 20px;'>¡Hola " . htmlspecialchars($nombre) . "!</h3>
+                <h3 style='color: #059669; font-size: 24px; margin-bottom: 20px;'>¡Hola " . $nombre . "!</h3>
                 <p style='font-size: 18px; margin-bottom: 25px;'>¡Excelente noticia! Tu compra ha sido procesada exitosamente y ya estamos preparando tu increíble experiencia de viaje.</p>
                 
                 <div class='order-summary'>
@@ -478,11 +468,11 @@ function generarHtmlEmailCompra($email, $nombre, $numero_pedido, $total, $produc
                         </div>
                         <div class='info-item'>
                             <strong>Cliente</strong>
-                            <span>" . htmlspecialchars($nombre) . "</span>
+                            <span>" . $nombre . "</span>
                         </div>
                         <div class='info-item'>
                             <strong>Email</strong>
-                            <span>" . htmlspecialchars($email) . "</span>
+                            <span>" . $email . "</span>
                         </div>
                     </div>
                     
@@ -555,7 +545,7 @@ function isEmailConfigured() {
     return ini_get('SMTP') || ini_get('sendmail_path');
 }
 
-// Función para mostrar emails generados (para debugging)
+// Función para mostrar emails generados (para debug)
 function listarEmailsGenerados() {
     $email_dir = __DIR__ . '/../emails_simulados';
     if (!file_exists($email_dir)) {
