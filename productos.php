@@ -175,7 +175,7 @@ $categorias = $stmt_cat->fetchAll(PDO::FETCH_COLUMN);
         </div>
     </section>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -184,7 +184,7 @@ $categorias = $stmt_cat->fetchAll(PDO::FETCH_COLUMN);
                         <i class="fas fa-globe-americas"></i>
                         <h3>Quantum Tour</h3>
                     </div>
-                    <p>Transformamos tus sueños de viaje en experiencias extraordinarias. Más de 15 años creando momentos inolvidables.</p>
+                    <p>Transformamos el viaje de tus sueños en experiencias extraordinarias. Más de 15 años creando momentos inolvidables.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -215,17 +215,16 @@ $categorias = $stmt_cat->fetchAll(PDO::FETCH_COLUMN);
                 <div class="footer-section">
                     <h4><i class="fas fa-phone"></i> Contacto</h4>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> info@quantumtour.com</p>
-                        <p><i class="fas fa-phone"></i> +54 11 4567-8900</p>
-                        <p><i class="fas fa-whatsapp"></i> +54 9 11 1234-5678</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Av. Corrientes 1234, CABA</p>
+                        <p><i class="fas fa-envelope"></i> admin@quantumtour.com</p>
+                        <p><i class="fas fa-phone"></i> +54 11 3909-0655</p>
+                        <p><i class="fas fa-whatsapp"></i> +54 9 11 3909-0655</p>
+                        <p><i class="fas fa-map-marker-alt"></i> C. 111 y 19</p>
                     </div>
-                    
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
-                    <p>&copy; 2024 Quantum Tour. Todos los derechos reservados.</p>
+                    <p>&copy; 2025 Quantum Tour. Todos los derechos reservados.</p>
                     <div class="footer-links">
                         <a href="#">Términos y Condiciones</a>
                         <a href="#">Política de Privacidad</a>
