@@ -5,11 +5,6 @@ require_once '../config/database.php';
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate');
 
-// Debug: Log de la petición
-error_log("add-to-cart.php: Iniciando script");
-error_log("POST data: " . print_r($_POST, true));
-error_log("Session data: " . print_r($_SESSION, true));
-
 if (!isLoggedIn()) {
     error_log("Usuario no logueado");
     echo json_encode(['success' => false, 'message' => 'Debe iniciar sesión']);
